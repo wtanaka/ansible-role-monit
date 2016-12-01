@@ -36,7 +36,7 @@ galaxy_info:
   - name: EL
     versions:
   #  - all
-  #  - 5
+    - 5
     - 6
     - 7
   #- name: GenericUNIX
@@ -188,9 +188,8 @@ galaxy_info:
     #
     # NOTE: A tag is limited to a single word comprised of
     # alphanumeric characters. Maximum 20 tags per role.
-    - development
-    - compiler
-    - haskell
+    - system
+    - monitoring
 
 dependencies: []
   # List your role dependencies here, one per line.
