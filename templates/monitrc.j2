@@ -1,0 +1,32 @@
+set daemon {{monit_daemon}}
+
+{% if monit_logfile is defined and monit_logfile %}
+set logfile {{monit_logfile}}
+{% endif %}
+
+{% if monit_version >= 5 and monit_idfile is defined and monit_idfile %}
+set idfile {{monit_idfile}}
+{% endif %}
+
+{% if monit_version >= 5 and monit_statefile is defined and monit_statefile %}
+set statefile {{monit_statefile}}
+{% endif %}
+
+{% if monit_eventqueue_enable %}
+set eventqueue
+    basedir /var/lib/monit/events # set the base directory where events will be stored
+    slots {{monit_eventqueue_slots}} # optionally limit the queue size
+{% endif %}
+
+{% if monit_enable_http %}
+set httpd port 2812 and
+    use address localhost  # only accept connection from localhost
+    allow localhost        # allow localhost to connect to the server and
+    allow admin:monit      # require user 'admin' with password 'monit'
+{% endif %}
+
+{{monit_extra_config}}
+
+{% for include_dir in monit_include_dirs %}
+include {{include_dir}}/*
+{% endfor %}

@@ -1,0 +1,8 @@
+---
+monit_conf: /etc/monit/monitrc
+monit_eventqueue_basedir: /var/lib/monit/events
+monit_idfile: /var/lib/monit/id
+monit_include_dirs: [ "/etc/monit/conf.d", "/etc/monit/conf-enabled" ]
+monit_logfile: /var/log/monit.log
+monit_statefile: /var/lib/monit/state
+package_names: [ "monit" ]

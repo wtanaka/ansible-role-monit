@@ -13,3 +13,21 @@
   when: ansible_os_family == 'RedHat'
 
 - include: install_package_names.yml
+
+- name: query monit version
+  changed_when: false
+  command: "monit -V"
+  register: monit_version_result
+
+- name: set_fact for monit_version
+  set_fact:
+    monit_version: >-
+      {{ 5 if 'This is Monit version 5.' in monit_version_result.stdout else
+         4 if 'This is Monit version 4.' in monit_version_result.stdout else
+         3 if 'This is Monit version 3.' in monit_version_result.stdout else
+         None }}
+
+- name: monit conf
+  sudo: True
+  template: src=monitrc.j2 dest={{monit_conf}} owner=root
+  notify: restart monit

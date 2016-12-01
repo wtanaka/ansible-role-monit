@@ -1,0 +1,6 @@
+---
+monit_daemon: 30
+monit_enable_http: True
+monit_eventqueue_slots: 100
+monit_extra_config: ""
+monit_eventqueue_enable: True
