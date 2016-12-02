@@ -13,11 +13,11 @@ Example Playbook
       roles:
          - role: wtanaka.monit
            # monitor every 30 sec
-			  monit_daemon: 30
+           monit_daemon: 30
            # lets you run monit commands from command line
-			  monit_enable_http: True
-			  monit_eventqueue_slots: 100
-			  monit_eventqueue_enable: True
+           monit_enable_http: True
+           monit_eventqueue_slots: 100
+           monit_eventqueue_enable: True
 
 Or you can include just the role, and configure it in host vars file:
 
