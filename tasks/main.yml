@@ -14,6 +14,13 @@
 
 - include: install_package_names.yml
 
+- name: make log readable
+  sudo: True
+  file:
+    path: "{{monit_logfile}}"
+    mode: 0644
+  when: monit_logfile is defined and monit_logfile != "syslog"
+
 - name: query monit version
   changed_when: false
   command: "monit -V"
