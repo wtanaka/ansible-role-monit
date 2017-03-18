@@ -1,6 +1,6 @@
 ---
 monit_conf: /etc/monitrc
 monit_eventqueue_basedir: /var/monit
-monit_include_dirs: [ "/etc/monit.d" ]
+__monit_include_dirs: [ "/etc/monit.d" ]
 monit_logfile: syslog
 package_names: [ "monit" ]

@@ -30,6 +30,16 @@ Or you can include just the role, and configure it in host vars file:
 
     monit_daemon: 30
 
+### `monit_include_dirs`
+
+A list of directories to include as `include` statements in monitrc
+
+Example:
+
+```
+monit_include_dirs:
+- /etc/monit.d
+```
 
 License
 -------

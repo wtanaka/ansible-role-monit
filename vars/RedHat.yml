@@ -1,4 +1,4 @@
 ---
 monit_conf: /etc/monit.conf
-monit_include_dirs: [ "/etc/monit.d" ]
+__monit_include_dirs: [ "/etc/monit.d" ]
 package_names: [ "monit" ]
