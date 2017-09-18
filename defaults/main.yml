@@ -1,4 +1,5 @@
 ---
+monit_should_shortcircuit: True
 monit_daemon: 30
 monit_enable_http: True
 monit_eventqueue_slots: 100

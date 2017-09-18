@@ -41,6 +41,13 @@ monit_include_dirs:
 - /etc/monit.d
 ```
 
+### `monit_should_shortcircuit`
+
+Default: True
+
+When True, this role short-circuits itself if a "monit" is already in
+the path
+
 License
 -------
 
