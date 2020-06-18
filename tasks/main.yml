@@ -7,7 +7,7 @@
 
 - name: set should_run fact
   set_fact:
-    should_run: "{{installed|failed or not monit_should_shortcircuit}}"
+    should_run: "{{installed is failed or not monit_should_shortcircuit}}"
 
 - include: compat.yml
 
