@@ -1,0 +1,4 @@
+---
+- { become: yes, include: compat.yml }
+- { become: yes, include: epel.yml, when: ansible_distribution == 'CentOS'}
+- { become: yes, include: install_package_names.yml }
