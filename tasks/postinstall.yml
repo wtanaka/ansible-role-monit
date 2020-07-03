@@ -1,0 +1,29 @@
+---
+- name: make log readable
+  file:
+    path: "{{monit_logfile}}"
+    mode: 0644
+  when: monit_logfile is defined and monit_logfile != "syslog"
+
+- name: query monit version
+  changed_when: false
+  command: "monit -V"
+  register: monit_version_result
+
+- name: set_fact for monit_version
+  set_fact:
+    monit_version: >-
+      {{ 5 if 'This is Monit version 5.' in monit_version_result.stdout else
+         4 if 'This is Monit version 4.' in monit_version_result.stdout else
+         3 if 'This is Monit version 3.' in monit_version_result.stdout else
+         None }}
+
+# Workaround https://github.com/ansible/ansible/issues/6756
+- name: Set default monit_include_dirs if not already set
+  set_fact:
+    monit_include_dirs: "{{__monit_include_dirs}}"
+  when: monit_include_dirs is not defined
+
+- name: monit conf
+  template: src=monitrc.j2 dest={{monit_conf}} owner=root
+  notify: restart monit
